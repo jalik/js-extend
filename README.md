@@ -1,6 +1,6 @@
 # js-extend
 
-A simple function to merge objects.
+A utility to merge objects.
 
 ## Introduction
 
@@ -75,6 +75,9 @@ const mixedColors = extendRecursively({}, colorSet1, colorSet2);
 ```
 
 ## Changelog
+
+### v1.0.1
+- Fixed github repository
 
 ### v1.0.0
 - First public release
