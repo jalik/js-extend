@@ -15,7 +15,7 @@
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
@@ -26,52 +26,58 @@
  * Merge objects
  * @return {*}
  */
-export function extend() {
-    const args = Array.prototype.slice.call(arguments);
-    let a = args.shift();
+export function extend(...args) {
+  let a = args.shift();
 
-    for (let i = 0; i < args.length; i += 1) {
-        const b = args[i];
+  for (let i = 0; i < args.length; i += 1) {
+    const b = args[i];
 
-        if (typeof b === "object" && b !== null
-            && typeof a === "object" && a !== null) {
-            for (let key in b) {
-                if (b.hasOwnProperty(key)) {
-                    a[key] = b[key];
-                }
-            }
-        } else if (b !== null && typeof b !== "undefined") {
-            a = b;
+    if (typeof b === 'object' && b !== null
+      && typeof a === 'object' && a !== null) {
+      const keys = Object.keys(b);
+
+      for (let j = 0; j < keys.length; j += 1) {
+        const key = keys[j];
+
+        if (typeof b[key] !== 'undefined') {
+          a[key] = b[key];
         }
+      }
+    } else if (b !== null && typeof b !== 'undefined') {
+      a = b;
     }
-    return a;
+  }
+  return a;
 }
 
 /**
  * Merge objects recursively
  * @return {*}
  */
-export function extendRecursively() {
-    const args = Array.prototype.slice.call(arguments);
-    let a = args.shift();
+export function extendRecursively(...args) {
+  let a = args.shift();
 
-    for (let i = 0; i < args.length; i += 1) {
-        const b = args[i];
+  for (let i = 0; i < args.length; i += 1) {
+    const b = args[i];
 
-        if (typeof b === "object" && b !== null
-            && typeof a === "object" && a !== null) {
-            for (let key in b) {
-                if (b.hasOwnProperty(key)) {
-                    if (typeof b[key] === "object" && b[key] !== null) {
-                        a[key] = extend(a[key], b[key]);
-                    } else {
-                        a[key] = b[key];
-                    }
-                }
-            }
-        } else if (b !== null && typeof b !== "undefined") {
-            a = b;
+    if (typeof b === 'object' && b !== null
+      && typeof a === 'object' && a !== null) {
+      const keys = Object.keys(b);
+
+      for (let j = 0; j < keys.length; j += 1) {
+        const key = keys[j];
+
+        if (typeof b[key] !== 'undefined') {
+          if (typeof b[key] === 'object' && b[key] !== null) {
+            a[key] = extend(a[key], b[key]);
+          } else {
+            a[key] = b[key];
+          }
         }
+      }
+    } else if (b !== null && typeof b !== 'undefined') {
+      a = b;
     }
-    return a;
+  }
+  return a;
 }
