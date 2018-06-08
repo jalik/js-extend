@@ -24,10 +24,9 @@
   "scripts": {
     "build": "./node_modules/.bin/gulp build",
     "bundle": "./node_modules/.bin/webpack -p",
-    "build:prod": "./node_modules/.bin/gulp prepare",
     "lint": "./node_modules/.bin/eslint .",
     "lint-fix": "./node_modules/.bin/eslint --fix .",
-    "prepare": "npm run build:prod && npm test",
+    "prepare": "./node_modules/.bin/gulp prepare",
     "prepublishOnly": "npm test",
     "test": "./node_modules/.bin/jest",
     "watch": "./node_modules/.bin/gulp watch"
