@@ -1,4 +1,4 @@
-# js-extend
+# jk-extend
 
 A utility to merge objects.
 
