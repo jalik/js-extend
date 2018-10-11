@@ -1,4 +1,4 @@
-# jk-extend
+# @jalik/extend
 
 A utility to merge objects.
 
