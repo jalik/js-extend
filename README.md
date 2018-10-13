@@ -1,77 +1,73 @@
 # @jalik/extend
 
-A utility to merge objects.
+A utility to merge flat objects.
+
+**Warning:** 
+*This library is doing a "flat merge", so if you need to merge deep objects, use the following library instead: [@jalik/deep-extend](https://www.npmjs.com/package/@jalik/deep-extend)*
 
 ## Introduction
 
-Useful when you need to merge two or more objects into one.
+Useful to merge several objects into one, for creating a configuration based on default parameters for example.
 
-**This library is tested with unit tests.**
+**This library has been unit tested.**
 
 ## Merging objects
 
 In this example, all objects are merged into the first object, so the first object is modified, if you don't want to modify the object, pass en empty object `{}` as the first argument.
 
 Note that objects are merged based on their order, so the 2nd object is merged in the first, then the 3rd is merged in the first, and so on...
-Keep in mind that first objects may be overridden by following objects.
 
 ```js
-import {extend} from "@jalik/extend";
+import extend from "@jalik/extend";
 
 const coldColors = {
     blue: "#0000FF",
+    cyan: "#00FFFF",
     green: "#00FF00"
 };
 
 const hotColors = {
-    red: "#FF0000",
-    yellow: "#FFF000"
+    yellow: "#FFFF00",
+    orange: "#FFAA00",
+    red: "#FF0000"
 };
 
-const customColors = {
-    cyan: "#5BF8FF",
-    pink: "#FF4CFB"
-};
-
-// Merge all colors in a new object
-const mixedColors = extend({}, hotColors, coldColors, customColors);
+// Merge all colors to create a rainbow
+const rainbow = extend({}, coldColors, hotColors);
 ```
 
-## Merging objects recursively
+## Merging arrays
 
-In the previous example, all objects were flat, but it works also with deep objects and nested attributes.
+Of course you can use the new Javascript syntax `Array.concat(...arrays)`, but the extend method works in a way that `null` and `undefined` are ignored, which can be useful sometimes.
 
 ```js
-import {extendRecursively} from "@jalik/extend";
+import extend from "@jalik/extend";
 
-const colorSet1 = {
-    cold: {
-        blue: "#0000FF",
-        green: "#00FF00"
-    },
-    hot: {
-        red: "#FF0000",
-        yellow: "#FFF000"
-    },
-    custom: {
-      cyan: "#5BF8FF",
-      pink: "#FF4CFB"
-    }
-};
+const a = [2, 4, null, 6];
+const b = [1, 3, 5, undefined];
+const c = extend([], a, b);
 
-const colorSet2 = {
-    cold: {
-        blue: "#0011AA",
-        green: "#00AA11"
-    },
-    hot: {
-        red: "#AA0011",
-        yellow: "#AAA111"
-    }
-};
+// c would result to [2, 4, 6, 1, 3, 5]
+```
 
-// Merge all colors in a new object
-const mixedColors = extendRecursively({}, colorSet1, colorSet2);
+## Merging arrays into object
+
+You can easily convert an array to an object with the extend method.
+
+```js
+import extend from "@jalik/extend";
+
+const numbers = [1, 3, 3, 7];
+const Numbers = extend({length: numbers.length}, numbers);
+
+// Numbers would result to:
+// {
+//   length: 4, 
+//   0: 1,
+//   1: 3, 
+//   2: 3, 
+//   3: 7 
+// }
 ```
 
 ## Changelog

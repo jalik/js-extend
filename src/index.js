@@ -23,55 +23,30 @@
  */
 
 /**
- * Merge objects
+ * Merge flat objects
  * @return {*}
  */
-export function extend(...args) {
+function extend(...args) {
   let a = args.shift();
 
   for (let i = 0; i < args.length; i += 1) {
     const b = args[i];
 
-    if (typeof b === 'object' && b !== null
-      && typeof a === 'object' && a !== null) {
-      const keys = Object.keys(b);
+    if (a !== null && b !== null && typeof a !== 'undefined' && typeof b !== 'undefined') {
+      // Merge objects
+      if (typeof b === 'object' && typeof a === 'object') {
+        // Merge arrays
+        if (b instanceof Array && a instanceof Array) {
+          a = a.concat(b);
+        } else {
+          const keys = Object.keys(b);
 
-      for (let j = 0; j < keys.length; j += 1) {
-        const key = keys[j];
+          for (let j = 0; j < keys.length; j += 1) {
+            const key = keys[j];
 
-        if (typeof b[key] !== 'undefined') {
-          a[key] = b[key];
-        }
-      }
-    } else if (b !== null && typeof b !== 'undefined') {
-      a = b;
-    }
-  }
-  return a;
-}
-
-/**
- * Merge objects recursively
- * @return {*}
- */
-export function extendRecursively(...args) {
-  let a = args.shift();
-
-  for (let i = 0; i < args.length; i += 1) {
-    const b = args[i];
-
-    if (typeof b === 'object' && b !== null
-      && typeof a === 'object' && a !== null) {
-      const keys = Object.keys(b);
-
-      for (let j = 0; j < keys.length; j += 1) {
-        const key = keys[j];
-
-        if (typeof b[key] !== 'undefined') {
-          if (typeof b[key] === 'object' && b[key] !== null) {
-            a[key] = extend(a[key], b[key]);
-          } else {
-            a[key] = b[key];
+            if (typeof b[key] !== 'undefined') {
+              a[key] = b[key];
+            }
           }
         }
       }
@@ -81,3 +56,5 @@ export function extendRecursively(...args) {
   }
   return a;
 }
+
+export default extend;

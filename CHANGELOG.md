@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.0.0
+- Adds support for merging arrays
+- Fixes merging of objects when the first argument is `undefined`
+
+**BREAKING CHANGES:**
+- Exports method `extend()` using ES6 default export, it means that you must import the package with `import extend from '@jalik/extend'` instead of `import { extend } from '@jalik/extend'`
+- Removes method `extendRecursively()`, because it has moved to its own package `@jalik/deep-extend`
+
 ## v1.0.3
 - Updates devDependencies
 

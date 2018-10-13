@@ -22,55 +22,58 @@
  * SOFTWARE.
  */
 
-import { extend, extendRecursively } from '../src';
+import extend from '../src';
 
-describe('extend()', () => {
-  it('extend(null, null) should return null', () => {
-    expect(extend(null, null)).toEqual(null);
-  });
-
-  it('extend(null, {a: true}) should return an object', () => {
-    expect(extend(null, { a: true })).toEqual({ a: true });
-  });
-
-  it('extend({a: true}, null) should return an object', () => {
-    expect(extend({ a: true }, null)).toEqual({ a: true });
-  });
-
-  it('extend({a: true}, {a: false}) should merge objects', () => {
-    expect(extend({ a: true }, { a: false })).toEqual({ a: false });
-    expect(extend({ a: true }, { b: false })).toEqual({ a: true, b: false });
-  });
-
-  it('extend({a: true}, {b: {c: false}}) should merge objects non recursively', () => {
-    const obj1 = { a: true, b: { d: 0 } };
-    const obj2 = { b: { c: false } };
-    expect(extend(obj1, obj2)).toEqual({ a: true, b: { c: false } });
-  });
+it('extend(null, null) should return null', () => {
+  expect(extend(null, null)).toEqual(null);
 });
 
-describe('extendRecursively()', () => {
-  it('extendRecursively(null, null) should return null', () => {
-    expect(extendRecursively(null, null)).toEqual(null);
-  });
+it('extend(null, {a: true}) should return an object', () => {
+  expect(extend(null, { a: true })).toEqual({ a: true });
+});
 
-  it('extendRecursively(null, {a: true}) should return an object', () => {
-    expect(extendRecursively(null, { a: true })).toEqual({ a: true });
-  });
+it('extend(undefined, {a: true}) should return an object', () => {
+  expect(extend(undefined, { a: true })).toEqual({ a: true });
+});
 
-  it('extendRecursively({a: true}, null) should return an object', () => {
-    expect(extendRecursively({ a: true }, null)).toEqual({ a: true });
-  });
+it('extend({a: true}, null) should return an object', () => {
+  expect(extend({ a: true }, null)).toEqual({ a: true });
+});
 
-  it('extendRecursively({a: true}, {a: false}) should merge objects', () => {
-    expect(extendRecursively({ a: true }, { a: false })).toEqual({ a: false });
-    expect(extendRecursively({ a: true }, { b: false })).toEqual({ a: true, b: false });
-  });
+it('extend({ a: 0 }, undefined, { b: 1 }) should return { a: 0, b: 1 }', () => {
+  expect(extend({ a: 0 }, undefined, { b: 1 })).toEqual({ a: 0, b: 1 });
+});
 
-  it('extendRecursively({a: true}, {b: {c: false}}) should merge objects recursively', () => {
-    expect(extendRecursively({ a: true, b: { d: 0 } }, { b: { c: false } })).toEqual({
-      a: true,
-      b: { d: 0, c: false },
-    });
+it('extend({a: true}, {a: false}) should merge objects', () => {
+  expect(extend({ a: true }, { a: false })).toEqual({ a: false });
+  expect(extend({ a: true }, { b: false })).toEqual({ a: true, b: false });
+});
+
+it('extend({a: true}, {b: {c: false}}) should merge objects non recursively', () => {
+  const obj1 = { a: true, b: { d: 0 } };
+  const obj2 = { b: { c: false } };
+  expect(extend(obj1, obj2)).toEqual({ a: true, b: { c: false } });
+});
+
+it('extend([0, 1], [6, 7]) should return [0, 1, 6, 7]', () => {
+  expect(extend([0, 1], [6, 7])).toEqual([0, 1, 6, 7]);
+});
+
+it('extend({}, [10, 20]) should return { 0: 10, 1: 20 }', () => {
+  expect(extend({}, [10, 20])).toEqual({ 0: 10, 1: 20 });
+});
+
+it('extend(null, [1], undefined, [2]) should return [1, 2]', () => {
+  expect(extend(null, [1], undefined, [2])).toEqual([1, 2]);
+});
+
+it('extend(null, [1], undefined, [2]) should return [1, 2]', () => {
+  const numbers = [1, 3, 3, 7];
+  expect(extend({ length: numbers.length }, numbers)).toEqual({
+    length: numbers.length,
+    0: 1,
+    1: 3,
+    2: 3,
+    3: 7,
   });
 });
