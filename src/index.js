@@ -34,16 +34,22 @@ function extend(...args) {
 
     if (a !== null && b !== null && typeof a !== 'undefined' && typeof b !== 'undefined') {
       // Merge objects
-      if (typeof b === 'object' && typeof a === 'object') {
+      if (typeof a === 'object' && typeof b === 'object') {
         // Merge arrays
-        if (b instanceof Array && a instanceof Array) {
-          a = a.concat(b);
+        if (a instanceof Array && b instanceof Array) {
+          for (let index = 0; index < b.length; index += 1) {
+            // Ignore undefined value
+            if (typeof b[index] !== 'undefined') {
+              a[index] = b[index];
+            }
+          }
         } else {
           const keys = Object.keys(b);
 
           for (let j = 0; j < keys.length; j += 1) {
             const key = keys[j];
 
+            // Ignore undefined value
             if (typeof b[key] !== 'undefined') {
               a[key] = b[key];
             }

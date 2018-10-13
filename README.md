@@ -47,7 +47,7 @@ const a = [2, 4, null, 6];
 const b = [1, 3, 5, undefined];
 const c = extend([], a, b);
 
-// c would result to [2, 4, 6, 1, 3, 5]
+// c would result to [1, 3, 5, 6]
 ```
 
 ## Merging arrays into object

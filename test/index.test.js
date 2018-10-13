@@ -25,55 +25,95 @@
 import extend from '../src';
 
 it('extend(null, null) should return null', () => {
-  expect(extend(null, null)).toEqual(null);
+  const a = null;
+  const b = null;
+  const result = null;
+  expect(extend(a, b)).toEqual(result);
 });
 
 it('extend(null, {a: true}) should return an object', () => {
-  expect(extend(null, { a: true })).toEqual({ a: true });
+  const a = null;
+  const b = { a: true };
+  const result = { a: true };
+  expect(extend(a, b)).toEqual(result);
 });
 
 it('extend(undefined, {a: true}) should return an object', () => {
-  expect(extend(undefined, { a: true })).toEqual({ a: true });
+  const a = undefined;
+  const b = { a: true };
+  const result = { a: true };
+  expect(extend(a, b)).toEqual(result);
 });
 
 it('extend({a: true}, null) should return an object', () => {
-  expect(extend({ a: true }, null)).toEqual({ a: true });
+  const a = { a: true };
+  const b = null;
+  const result = { a: true };
+  expect(extend(a, b)).toEqual(result);
 });
 
 it('extend({ a: 0 }, undefined, { b: 1 }) should return { a: 0, b: 1 }', () => {
-  expect(extend({ a: 0 }, undefined, { b: 1 })).toEqual({ a: 0, b: 1 });
+  const a = { a: 0 };
+  const b = undefined;
+  const c = { b: 1 };
+  const result = { a: 0, b: 1 };
+  expect(extend(a, b, c)).toEqual(result);
 });
 
 it('extend({a: true}, {a: false}) should merge objects', () => {
-  expect(extend({ a: true }, { a: false })).toEqual({ a: false });
-  expect(extend({ a: true }, { b: false })).toEqual({ a: true, b: false });
+  const a = { a: true };
+  const b = { a: false, b: true };
+  const result = { a: false, b: true };
+  expect(extend(a, b)).toEqual(result);
 });
 
 it('extend({a: true}, {b: {c: false}}) should merge objects non recursively', () => {
-  const obj1 = { a: true, b: { d: 0 } };
-  const obj2 = { b: { c: false } };
-  expect(extend(obj1, obj2)).toEqual({ a: true, b: { c: false } });
+  const a = { a: true, b: { d: 0 } };
+  const b = { b: { c: false } };
+  const result = { a: true, b: { c: false } };
+  expect(extend(a, b)).toEqual(result);
 });
 
-it('extend([0, 1], [6, 7]) should return [0, 1, 6, 7]', () => {
-  expect(extend([0, 1], [6, 7])).toEqual([0, 1, 6, 7]);
+it('extend([0, 1], [undefined, 7]) should return [0, 7]', () => {
+  const a = [0, 1];
+  const b = [undefined, 7];
+  const result = [0, 7];
+  expect(extend(a, b)).toEqual(result);
+});
+
+it('extend([0, 1], [undefined, 7]) should return [0, 7]', () => {
+  const a = [2, 4, null, 6];
+  const b = [1, 3, 5, undefined];
+  const result = [1, 3, 5, 6];
+  expect(extend(a, b)).toEqual(result);
 });
 
 it('extend({}, [10, 20]) should return { 0: 10, 1: 20 }', () => {
-  expect(extend({}, [10, 20])).toEqual({ 0: 10, 1: 20 });
+  const a = {};
+  const b = [10, 20];
+  const result = { 0: 10, 1: 20 };
+  expect(extend(a, b)).toEqual(result);
 });
 
-it('extend(null, [1], undefined, [2]) should return [1, 2]', () => {
-  expect(extend(null, [1], undefined, [2])).toEqual([1, 2]);
+it('extend(null, [1], undefined, [2]) should return [2]', () => {
+  const a = null;
+  const b = [1];
+  const c = undefined;
+  const d = [2];
+  const result = [2];
+  expect(extend(a, b, c, d)).toEqual(result);
 });
 
-it('extend(null, [1], undefined, [2]) should return [1, 2]', () => {
+it('extend({ length: numbers.length }, [1, 3, 3, 7]) should return { length, ...numbers }', () => {
   const numbers = [1, 3, 3, 7];
-  expect(extend({ length: numbers.length }, numbers)).toEqual({
+  const a = { length: numbers.length };
+  const b = [1, 3, 3, 7];
+  const result = {
     length: numbers.length,
     0: 1,
     1: 3,
     2: 3,
     3: 7,
-  });
+  };
+  expect(extend(a, b)).toEqual(result);
 });

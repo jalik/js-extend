@@ -1,5 +1,8 @@
 # Changelog
 
+## v2.0.1
+- Fixes merging of arrays, so values are replaced instead of being concatened
+
 ## v2.0.0
 - Adds support for merging arrays
 - Fixes merging of objects when the first argument is `undefined`
