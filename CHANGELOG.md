@@ -1,5 +1,8 @@
 # Changelog
 
+## v2.0.2
+- Updates dependencies
+
 ## v2.0.1
 - Fixes merging of arrays, so values are replaced instead of being concatened
 
