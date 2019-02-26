@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.1.1
+- Updates dependencies
+- Changes index to `src/index.js`
+
 ## v2.1.0
 - Lib available in ES6+ syntax (see `src` folder) to enable auto-completion in IDEs
 - Updates dependencies
