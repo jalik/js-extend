@@ -23,7 +23,7 @@
  */
 
 /**
- * Merge flat objects
+ * Merge flat objects.
  * @return {*}
  */
 function extend(...args) {
