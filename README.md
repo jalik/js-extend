@@ -1,4 +1,10 @@
 # @jalik/extend
+![GitHub package.json version](https://img.shields.io/github/package-json/v/jalik/js-extend.svg)
+[![Build Status](https://travis-ci.com/jalik/js-extend.svg?branch=master)](https://travis-ci.com/jalik/js-extend)
+![GitHub](https://img.shields.io/github/license/jalik/js-extend.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/jalik/js-extend.svg)
+[![GitHub issues](https://img.shields.io/github/issues/jalik/js-extend.svg)](https://github.com/jalik/js-extend/issues)
+![npm](https://img.shields.io/npm/dt/@jalik/extend.svg)
 
 A utility to merge flat objects.
 
@@ -8,8 +14,6 @@ A utility to merge flat objects.
 ## Introduction
 
 Useful to merge several objects into one, for creating a configuration based on default parameters for example.
-
-**This library has been unit tested.**
 
 ## Merging objects
 
