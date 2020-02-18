@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Karl STEIN
+ * Copyright (c) 2020 Karl STEIN
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,44 +22,36 @@
  * SOFTWARE.
  */
 
-import extend from '../src';
+import extend from '../src/extend';
 
 it('extend(null, null) should return null', () => {
-  const a = null;
-  const b = null;
-  expect(extend(a, b)).toEqual(null);
+  expect(extend(null, null)).toEqual(null);
 });
 
 it('extend(undefined, undefined) should return undefined', () => {
-  const a = undefined;
-  const b = undefined;
-  expect(extend(a, b)).toEqual(undefined);
+  expect(extend(undefined, undefined)).toEqual(undefined);
 });
 
 // Objects
 
 it('extend() should replace null values', () => {
-  const a = null;
   const b = { a: 1 };
-  expect(extend(a, b)).toEqual(b);
+  expect(extend(null, b)).toEqual(b);
 });
 
 it('extend() should replace undefined values', () => {
-  const a = undefined;
   const b = { a: 1 };
-  expect(extend(a, b)).toEqual(b);
+  expect(extend(undefined, b)).toEqual(b);
 });
 
 it('extend() should ignore null values', () => {
   const a = { a: 1 };
-  const b = null;
-  expect(extend(a, b)).toEqual(a);
+  expect(extend(a, null)).toEqual(a);
 });
 
 it('extend() should ignore undefined values', () => {
   const a = { a: 1 };
-  const b = undefined;
-  expect(extend(a, b)).toEqual(a);
+  expect(extend(a, undefined)).toEqual(a);
 });
 
 it('extend() should replace existing attributes', () => {
