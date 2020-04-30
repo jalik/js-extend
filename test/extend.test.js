@@ -74,6 +74,12 @@ it('extend() should merge objects non recursively', () => {
   expect(extend(a, b)).toEqual(r);
 });
 
+it('should not modify input array', () => {
+  const a = { array: null };
+  const b = { array: [1, 2, 3] };
+  expect(extend(a, b).array).not.toBe(b.array);
+});
+
 // Arrays
 
 it('extend() should merge arrays by replacing index value', () => {
@@ -94,6 +100,12 @@ it('extend() should merge arrays non recursively', () => {
   const b = [undefined, [4, [undefined, 5], 6], 7];
   const r = [1, [4, [undefined, 5], 6], 7];
   expect(extend(a, b)).toEqual(r);
+});
+
+it('should not modify input array', () => {
+  const a = null;
+  const b = [1, 2, 3];
+  expect(extend(a, b)).not.toBe(b);
 });
 
 // Arrays to Object
