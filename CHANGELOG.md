@@ -1,33 +1,33 @@
 # Changelog
 
 ## v2.1.8
-- Updates dependencies
+- Upgrades dependencies
 
 ## v2.1.7
-- Updates dependencies
+- Upgrades dependencies
 
 ## v2.1.6
 - Fixes merging of arrays by cloning them in the extended object
-- Updates dependencies
+- Upgrades dependencies
 
 ## v2.1.5
-- Updates dependencies
+- Upgrades dependencies
 
 ## v2.1.4
-- Updates dependencies
+- Upgrades dependencies
 
 ## v2.1.3
-- Updates dependencies
+- Upgrades dependencies
 
 ## v2.1.2
-- Updates dependencies
+- Upgrades dependencies
 
 ## v2.1.0
 - Lib available in ES6+ syntax (see `src` folder) to enable auto-completion in IDEs
-- Updates dependencies
+- Upgrades dependencies
 
 ## v2.0.2
-- Updates dependencies
+- Upgrades dependencies
 
 ## v2.0.1
 - Fixes merging of arrays, so values are replaced instead of being concatened
@@ -41,13 +41,13 @@
 - Removes method `extendRecursively()`, because it has moved to its own package `@jalik/deep-extend`
 
 ## v1.0.3
-- Updates devDependencies
+- Upgrades devDependencies
 
 ## v1.0.2
-- Updates devDependencies
+- Upgrades devDependencies
 
 ## v1.0.1
-- Fixed github repository
+- Fixes github repository
 
 ## v1.0.0
 - First public release
