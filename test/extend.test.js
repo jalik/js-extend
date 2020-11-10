@@ -3,7 +3,7 @@
  * Copyright (c) 2020 Karl STEIN
  */
 
-import extend from '../src';
+import extend from '../src/extend';
 
 describe('extend(null, null)', () => {
   it('should return null', () => {

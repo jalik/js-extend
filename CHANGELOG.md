@@ -1,8 +1,12 @@
 # Changelog
 
-## v2.1.9
+## v2.1.10
+- Renamed index.js to extend.js
+
+## v2.1.9 (deprecated)
+**This version has been published with unwanted changes**
 - Added `esnext` and `sideEffects` in package.json
-- Renamed the main file to `index.js`
+- Renamed extend.js to index.js
 - Upgraded dependencies
 
 ## v2.1.8
