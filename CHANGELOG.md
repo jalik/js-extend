@@ -1,33 +1,38 @@
 # Changelog
 
+## v2.1.9
+- Added `esnext` and `sideEffects` in package.json
+- Renamed the main file to `index.js`
+- Upgraded dependencies
+
 ## v2.1.8
-- Upgrades dependencies
+- Upgraded dependencies
 
 ## v2.1.7
-- Upgrades dependencies
+- Upgraded dependencies
 
 ## v2.1.6
 - Fixes merging of arrays by cloning them in the extended object
-- Upgrades dependencies
+- Upgraded dependencies
 
 ## v2.1.5
-- Upgrades dependencies
+- Upgraded dependencies
 
 ## v2.1.4
-- Upgrades dependencies
+- Upgraded dependencies
 
 ## v2.1.3
-- Upgrades dependencies
+- Upgraded dependencies
 
 ## v2.1.2
-- Upgrades dependencies
+- Upgraded dependencies
 
 ## v2.1.0
 - Lib available in ES6+ syntax (see `src` folder) to enable auto-completion in IDEs
-- Upgrades dependencies
+- Upgraded dependencies
 
 ## v2.0.2
-- Upgrades dependencies
+- Upgraded dependencies
 
 ## v2.0.1
 - Fixes merging of arrays, so values are replaced instead of being concatened
@@ -41,10 +46,10 @@
 - Removes method `extendRecursively()`, because it has moved to its own package `@jalik/deep-extend`
 
 ## v1.0.3
-- Upgrades devDependencies
+- Upgraded devDependencies
 
 ## v1.0.2
-- Upgrades devDependencies
+- Upgraded devDependencies
 
 ## v1.0.1
 - Fixes github repository
