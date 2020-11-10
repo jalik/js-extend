@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/jalik/js-extend/issues"
   },
-  "main": "dist/extend.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "babel src -d dist",
     "clean": "rimraf dist",

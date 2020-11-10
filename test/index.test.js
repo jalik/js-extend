@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-import extend from '../src/extend';
+import extend from '../src';
 
 describe('extend(null, null)', () => {
   it('should return null', () => {
