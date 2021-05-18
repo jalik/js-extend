@@ -1,6 +1,6 @@
 /*
  * The MIT License (MIT)
- * Copyright (c) 2020 Karl STEIN
+ * Copyright (c) 2021 Karl STEIN
  */
 
 import extend from '../src/extend';
@@ -134,5 +134,15 @@ describe('extend(object, array)', () => {
     const b = [1];
     const r = { 0: 1 };
     expect(extend(a, b)).toEqual(r);
+  });
+});
+
+describe('extend({}, { __proto__: { polluted: "polluted" } })', () => {
+  it('should not pollute prototype', () => {
+    const a = {};
+    const b = JSON.parse('{"__proto__": {"polluted": "polluted"}}');
+    const result = extend(a, b);
+    expect(result).toStrictEqual({});
+    expect({}.polluted).toBeUndefined();
   });
 });

@@ -1,6 +1,6 @@
 /*
  * The MIT License (MIT)
- * Copyright (c) 2020 Karl STEIN
+ * Copyright (c) 2021 Karl STEIN
  */
 
 /**
@@ -49,12 +49,15 @@ function extend(...args) {
           for (let j = 0; j < keys.length; j += 1) {
             const key = keys[j];
 
-            // Ignore undefined value
-            if (typeof b[key] !== 'undefined') {
-              if (b[key] instanceof Array) {
-                a[key] = mergeArrays([], b[key]);
-              } else {
-                a[key] = b[key];
+            // Avoid prototype pollution.
+            if (key !== '__proto__') {
+              // Ignore undefined value.
+              if (typeof b[key] !== 'undefined') {
+                if (b[key] instanceof Array) {
+                  a[key] = mergeArrays([], b[key]);
+                } else {
+                  a[key] = b[key];
+                }
               }
             }
           }
