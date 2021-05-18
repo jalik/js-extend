@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.1.12
+- Fixed potential prototype pollution while merging
+- Upgraded dependencies
+
 ## v2.1.11
 - Upgraded dependencies
 
