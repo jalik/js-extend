@@ -1,6 +1,6 @@
 {
   "name": "@jalik/extend",
-  "version": "2.1.12",
+  "version": "2.1.13",
   "description": "A utility to merge flat objects.",
   "license": "MIT",
   "keywords": [
