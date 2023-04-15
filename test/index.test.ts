@@ -3,7 +3,8 @@
  * Copyright (c) 2021 Karl STEIN
  */
 
-import extend from '../src/extend';
+import { describe, expect, it } from '@jest/globals';
+import extend from '../src/index';
 
 describe('extend(null, null)', () => {
   it('should return null', () => {
@@ -143,6 +144,7 @@ describe('extend({}, { __proto__: { polluted: "polluted" } })', () => {
     const b = JSON.parse('{"__proto__": {"polluted": "polluted"}}');
     const result = extend(a, b);
     expect(result).toStrictEqual({});
+    // @ts-ignore
     expect({}.polluted).toBeUndefined();
   });
 });
