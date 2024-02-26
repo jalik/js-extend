@@ -16,6 +16,15 @@ A utility to merge flat objects.
 
 Useful to merge several objects into one, for creating a configuration based on default parameters for example.
 
+## Installing
+
+```shell
+npm i -P @jalik/extend
+```
+```shell
+yarn add @jalik/extend
+```
+
 ## Merging objects
 
 In this example, all objects are merged into the first object, so the first object is modified, if you don't want to modify the object, pass en empty object `{}` as the first argument.
