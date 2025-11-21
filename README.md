@@ -32,7 +32,7 @@ In this example, all objects are merged into the first object, so the first obje
 Note that objects are merged based on their order, so the 2nd object is merged in the first, then the 3rd is merged in the first, and so on...
 
 ```js
-import extend from "@jalik/extend";
+import { extend } from "@jalik/extend";
 
 const coldColors = {
   blue: "#0000FF",
@@ -67,7 +67,7 @@ The result:
 Several arrays can be merged easily. Note that `undefined` values are ignored when merging.
 
 ```js
-import extend from "@jalik/extend";
+import { extend } from "@jalik/extend";
 
 const a = [0, 0, 0, 7];
 const b = [0, 0, 3];
@@ -87,7 +87,7 @@ The result:
 You can easily convert an array to an object with the extend method.
 
 ```js
-import extend from "@jalik/extend";
+import { extend } from "@jalik/extend";
 
 const numbers = [1, 3, 3, 7];
 const object = { length: numbers.length };

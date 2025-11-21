@@ -1,5 +1,15 @@
 # Changelog
 
+## v3.0.0 (2025-11-20)
+
+**BREAKING CHANGES**
+
+- refactor: remove default export
+
+**PATCHES**
+
+- deps: upgrade dependencies
+
 ## v2.2.1 (2023-04-14)
 
 - Added missing dev dependency (rimraf)
