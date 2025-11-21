@@ -21,13 +21,6 @@
     "url": "https://github.com/jalik/js-extend/issues"
   },
   "sideEffects": false,
-  "exports": {
-    ".": {
-      "import": "./esm/index.js",
-      "require": "./cjs/index.js",
-      "types": "./esm/index.d.ts"
-    }
-  },
   "main": "./cjs/index.js",
   "module": "./esm/index.js",
   "types": "./esm/index.d.ts",
