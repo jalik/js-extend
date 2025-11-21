@@ -4,7 +4,7 @@
     "declarationMap": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "NodeNext",
+    "module": "ES2022",
     "moduleResolution": "NodeNext",
     "noImplicitAny": true,
     "outDir": "./esm",
